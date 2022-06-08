@@ -18,7 +18,7 @@ stages
     
      }
      
-         stage ('run unit test framework')
+         stage ('create package')
     {
         steps { withMaven(jdk: 'JAVA_HOME', maven: 'MNV_HOME') {
     sh 'mvn package'
