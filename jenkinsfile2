@@ -17,6 +17,16 @@ stages
               }
     
      }
+     
+         stage ('run unit test framework')
+    {
+        steps { withMaven(jdk: 'JAVA_HOME', maven: 'MNV_HOME') {
+    sh 'mvn package'
+}
+                                                                                                                             
+              }
+    
+     }
 
 
 }
