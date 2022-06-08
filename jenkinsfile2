@@ -1,0 +1,22 @@
+pipeline 
+{
+    agent any
+stages
+{
+    stage ('scm checkout')
+    {
+        steps { git branch: 'master', url: 'https://github.com/umesh8301/jenkins_script.git'}
+    }
+
+    stage ('run unit test framework')
+    {
+        steps { withMaven(globalMavenSettingsConfig: 'null', jdk: 'JAVA_HOME', maven: 'MNV_HOME', mavenSettingsConfig: 'null') {
+        sh 'mvn test'
+                                                                                                                               } 
+              }
+    
+     }
+
+
+}
+}
