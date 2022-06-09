@@ -32,7 +32,7 @@ stages
      stage ('deploy to tomcat server')
      {
          steps { sshagent(['ssh_to_tomcat']) {
-    sh 'ssh -o StrictHostKeyChecking webapp/target/webapp.war ec2-user@52.15.211.232:/var/lib/tomcat/webapps'
+    sh 'ssh -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@52.15.211.232:/var/lib/tomcat/webapps'
 }
 
          }
