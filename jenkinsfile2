@@ -28,6 +28,24 @@ stages
     
      }
 
+     stage ('pacakge deploy')
+     {
+         steps { withMaven(jdk: 'JAVA_HOME', maven: 'MNV_HOME') {
+    sh 'mvn deploy'
+}
+
+         }
+     }
+
+     stage ('deploy to tomcat server')
+     {
+         steps { sshagent(['ssh_to_tomcat']) {
+    sh 'ssh -o StrictHostKeyChecking **/*.war ec2-user@52.15.211.232:/var/lib/tomcat/webapps'
+}
+
+         }
+     }
+
 
 }
 }
